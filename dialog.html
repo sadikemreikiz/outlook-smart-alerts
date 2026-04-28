@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Confirmation</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="dialog.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f3f2f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        padding: 28px 32px;
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .card h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #201f1e;
+        margin-bottom: 6px;
+      }
+
+      .card p.subtitle {
+        font-size: 13px;
+        color: #605e5c;
+        margin-bottom: 24px;
+      }
+
+      .field {
+        margin-bottom: 20px;
+      }
+
+      .field label.field-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #201f1e;
+        margin-bottom: 8px;
+      }
+
+      /* Radio group */
+      .radio-group {
+        display: flex;
+        gap: 20px;
+      }
+
+      .radio-group label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #323130;
+        cursor: pointer;
+      }
+
+      .radio-group input[type="radio"] {
+        accent-color: #0078d4;
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Select */
+      select {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #8a8886;
+        border-radius: 4px;
+        background: #ffffff;
+        color: #323130;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23605e5c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #0078d4;
+        box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+      }
+
+      /* Divider */
+      .divider {
+        border: none;
+        border-top: 1px solid #edebe9;
+        margin: 20px 0;
+      }
+
+      /* Buttons */
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      button {
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        transition: background 0.15s;
+      }
+
+      #cancelBtn {
+        background: #ffffff;
+        color: #323130;
+        border: 1px solid #8a8886;
+      }
+
+      #cancelBtn:hover {
+        background: #f3f2f1;
+      }
+
+      #sendBtn {
+        background: #0078d4;
+        color: #ffffff;
+      }
+
+      #sendBtn:hover {
+        background: #106ebe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Before you send...</h2>
+      <p class="subtitle">Please answer the questions below to proceed.</p>
+
+      <!-- Question 1 -->
+      <div class="field">
+        <label class="field-label">Does this email contain confidential information?</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="confidential" value="yes" />
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="confidential" value="no" checked />
+            No
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="field">
+        <label class="field-label" for="priority">Priority level?</label>
+        <select id="priority">
+          <option value="low">Low</option>
+          <option value="normal" selected>Normal</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Question 3 + Buttons -->
+      <div class="field">
+        <label class="field-label">Do you confirm sending this email?</label>
+      </div>
+
+      <div class="btn-row">
+        <button id="cancelBtn">Cancel</button>
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </body>
+</html>
